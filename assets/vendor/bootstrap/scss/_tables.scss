@@ -3,7 +3,7 @@
 //
 
 .table {
-  width: 100%;
+  width: 100%; /* Add this line to control the maximum width of the table */
   margin-bottom: $spacer;
   color: $table-color;
   background-color: $table-bg; // Reset for nesting within parents with `background-color`.
@@ -182,4 +182,18 @@
       }
     }
   }
+}
+
+// Add caption to tables
+
+.table-caption {
+  caption-side: top;
+  font-size: 1.1em; 
+  padding: 8px 0;
+  color: #333;
+  font-weight: normal; /* Add this line to set font-weight to normal */
+}
+
+.table-caption span {
+  font-weight: bold;
 }
