@@ -44,7 +44,7 @@ After calculating the positional centroids, we can determine the distance betwee
 
 ## 2 &nbsp; &nbsp; Data
 
-The data for this project is tracking data from a football match, stored in two excel files (1st & 2nd half). Each file contains the following features:
+Data for this project is tracking data from a football match, stored in two excel files (1st & 2nd half). Each file contains the following features:
 
 * *PlayerID*: A unique identifier for the player.
 * *Timestamp*: Time elapsed since the start of the match in milliseconds.
@@ -55,7 +55,7 @@ The data for this project is tracking data from a football match, stored in two 
 * *Position*: The player's position on the pitch, such as defender or attacker.
 * *Detailed_Position*: A more specific description of the player's position, such as right back or center forward.
 
-I used pandas ```read_excel``` method to read the excel files into a pandas DataFrame, *df*.
+Pandas ```read_excel``` method was used to read the excel files into a pandas DataFrame prior to data processing.
 
 ### 2.1 &nbsp; &nbsp; Data Processing
 
@@ -99,6 +99,7 @@ df_merged['Distance_to_Centroid'] = np.linalg.norm(
     df_merged.loc[:, ['X', 'Y']].values - df_merged.loc[:, ['Centroid_X', 'Centroid_Y']], 
     axis=1)
 ```
+&nbsp;
 
 ## 3 &nbsp; &nbsp; Result
 
@@ -260,7 +261,7 @@ This could also due to their tactical requirement/individual characteristics. De
 
 * Strikers from both teams had medium to low predictability.
 
-Again, This could be due to their tactical roles, running in behind the defensive line, running wide to create space or even dropping down to control the game. Strikes with less predictable movements poses danger to the opponent.
+Again, This could be due to their tactical roles, running in behind the defensive line, running wide to create space or even dropping down to control the game. Strikers with less predictable movements poses danger to the opponent.
 
 ### 3.2 &nbsp; &nbsp; Between Halves
 
@@ -270,7 +271,7 @@ The plot shows there was a slight decline in the value of approximate entropy be
 
 ![ApEn between halves](\img\posts\pitch-positioning\ApEn2.png)
 
-In summary, ApEn values can offer valuable insights into the tactical/individual behaviors of players, such as their defensive or attacking orientations, as well as their tactical roles and actions. When combined with additional contextual information, ApEn can be an effective performance indicator for evaluating tactical aspects of a player's performance.
+In summary, ApEn values can offer valuable insights into the tactical/individual behaviors of players, such as their defensive or attacking orientations, as well as their tactical roles and actions. When combined with additional contextual information, ApEn could be an effective performance indicator for evaluating tactical aspects of a player's performance.
 
 ### 3.3 &nbsp; &nbsp; Limitation
 
