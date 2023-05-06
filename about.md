@@ -6,15 +6,14 @@ background: '/img/football-pitch-2.jpg'
 
 Thank you for visiting my portfolio website!
 
-Here you can find the list of personal/university projects related to data science.
+Originally from Tokyo, I am now based in Liverpool, United Kingdom.
 
+Below, you'll find a collection of personal and academic projects related to data science and football.
 
 ### Project List
 #### Personal Project
-* <a href="https://shupa04.github.io/2023/04/14/pitch-positioning.html" style="color: #008AFF; text-decoration: underline;">Pitch Positioning Predictability in Football</a>
--> Python, Approximate Entropy & Large Tracking Data (>1.5 million rows)
-* <a href="https://shupa04.github.io/2023/04/13/world-cup.html" style="color: #008AFF; text-decoration: underline;">Implementing Expected Threat (xT)</a>
--> Python, Discrete Markov Process, Statsbomb Open Data 
+* <a href="https://shupa04.github.io/2023/04/14/pitch-positioning.html" style="color: #008AFF; text-decoration: underline;">Pitch Positioning Predictability in Football</a>: Python, Approximate Entropy & Large Tracking Data (>1.5 million rows)
+* <a href="https://shupa04.github.io/2023/04/13/world-cup.html" style="color: #008AFF; text-decoration: underline;">Implementing Expected Threat (xT)</a>: Python, Discrete Markov Process, Statsbomb Open Data 
 
 
 #### Group Project
@@ -76,10 +75,10 @@ Here you can find the list of personal/university projects related to data scien
 ### Other Skills
 * **Communication skills**
   * Acted as an interpreter (Japanese and English) for Albirex Niigata Singapore FC, who plays in the first division of Singapore.
-  * Presented coaches and players in multiple settings as an interpreter (post-match, team meeting, newspapers & TV)
-  * Experience as a performance analyst at Stoke City FC, AFC Liverpool & LJMU Men's Football Team
+  * Presented coaches and players in multiple settings as an interpreter (post-match, team meeting, newspapers & TV).
+  * Experience as a performance analyst at Stoke City FC, AFC Liverpool & LJMU Men's Football Team.
 * **Presentation skills**
-  * Presented my undergraduate thesis at BASES Student Conference 2021 hosted by Solent University
+  * Presented my undergraduate thesis at BASES Student Conference 2021 hosted by Solent University.
 * **Teamwork**
   * Conducted multiple group projects during my MSc programme, topics including supervised learning, neural networks, reinforcement learning and more. 
 
