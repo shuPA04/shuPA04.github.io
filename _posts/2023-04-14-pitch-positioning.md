@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "Pitch Positioning Predictability in Football"
-subtitle: "Apply approximate entropy to quantify how predictable player's positioning is."
+subtitle: ""
 background: '/img/posts/pitch-positioning/header.jpg'
 ---
 
-## **1 &nbsp; &nbsp; Project Introduction**
+## 1 &nbsp; &nbsp; Introduction
 
 This small project have two purposes:
 
@@ -16,7 +16,7 @@ To achieve the first objective, I analysed the tracking data of a football match
 
 To achieve the second objective,  I compared the obtained ApEn values of players in the first half of matches to those in the second half to investigate the potential effects of external factors on player's positioning.
 
-### **1.2 &nbsp; &nbsp; Approximate Entropy**
+### 1.2 &nbsp; &nbsp; Approximate Entropy
 
 Approximate entropy (ApEn) is a technique used to quantify the amount of predictability in a time-series data without any prior knowledge on the data-generating distribution. A low value of ApEn indicates the time-series is predictable, a high value indicates otherwise. Previous studies have applied ApEn to the tracking data from a football match to quantify movement patterns of players in terms of pitch positioning preditability. Examples of such studies are following:
 
@@ -32,7 +32,7 @@ This project followed the approach of Memmert et al. (2017), which are following
 * Compute ApEn from the distance values of each player, which indicates how predictable player's positioning is.
 * Classify the ApEn value in three groups (high, medium & low) based on the quantiles of distribution of ApEn.
 
-## **2 &nbsp; &nbsp; Data**
+## 2 &nbsp; &nbsp; Data
 
 The data used for this project is tracking data from a football match, including the following features:
 
@@ -47,7 +47,7 @@ The data used for this project is tracking data from a football match, including
 * *Position*: The player's position on the pitch, such as defender or attacker.
 * *Detailed_Position*: A more specific description of the player's position, such as right back or center forward.
 
-### **2.1 &nbsp; &nbsp; Data Preparation**
+### 2.1 &nbsp; &nbsp; Data Preparation
 
 Although the data is in a clean tabular format, some preprocessing steps were necessary before conducting the exploratory analysis. The following are some of the crucial steps taken:
 
@@ -55,7 +55,7 @@ Although the data is in a clean tabular format, some preprocessing steps were ne
 * Handle missing values in *X* and *Y* columns. Since the data is recorded in milliseconds, preceding and next rows should contain similar coordinate values. Hence forward filling was used.
 * Calculate positional centroids and the distance between each player and their corresponding centroid at each timestamp.
 
-### **2.2 &nbsp; &nbsp; Data Analysis - Visualising Centroids**
+### 2.2 &nbsp; &nbsp; Data Analysis - Visualising Centroids
 
 The figure shows two centroids - team and positional centroids.
 
