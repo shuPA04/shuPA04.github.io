@@ -18,46 +18,23 @@ To achieve the second objective,  I compared the obtained ApEn values of players
 
 ### 1.2 &nbsp; &nbsp; Approximate Entropy
 
-Approximate entropy (ApEn) is a technique used to quantify the amount of predictability in a time-series data without any prior knowledge on the data-generating distribution. A low value of ApEn indicates the time-series is predictable, a high value indicates otherwise. Previous studies have applied ApEn to the tracking data from a football match to quantify movement patterns of players in terms of pitch positioning preditability. Examples of such studies are following:
+Approximate entropy (ApEn) is a technique used to quantify the amount of predictability in a time-series data without any prior knowledge on the data-generating distribution. A low value of ApEn indicates the time-series is predictable, a high value indicates otherwise. Previous studies have applied ApEn to the tracking data from a football match to quantify movement patterns of players in terms of pitch positioning predictability. Examples of such studies are following:
 
 
 *  Sampaio & Maçãs (2011) investigated the effect of small-sided games on player's tactical understanding. The ApEn was applied to the distance between **team's centroid** and each player over the match. Lower ApEn in the post test indicated player's expertise in football increased due to the training sessions. 
 
-* Memmert et al. (2017) applied ApEn to the distance between each player and **position-specific centroids** in a game between Bayern Munich and Barcelona. The part of  result showed Bayern Munich central midfielder was highly predictable in his positioning relative to his positional cenetroid, indicating his pivotal role between players. 
+* Memmert et al. (2017) applied ApEn to the distance between each player and **position-specific centroids** in a game between Bayern Munich and Barcelona. The part of  result showed Bayern Munich central midfielder was highly predictable in his positioning relative to his positional centroid, indicating his pivotal role between players. 
 
 This project followed the approach of Memmert et al. (2017), which are following:
 
-* Calculate positional centroids by averaging the locations of players with the same position group (DEF, MID & ATT) in every 100 milliseconds. 
-* Calculate the distance between each player and his corresponding centroid in every 100 milliseconds. 
-* Compute ApEn from the distance values of each player, which indicates how predictable player's positioning is.
-* Classify the ApEn value in three groups (high, medium & low) based on the quantiles of distribution of ApEn.
+* Calculate the positional centroids for each position group (DEF, MID, and ATT) by averaging the players' locations every 100 milliseconds.
+* Determine the distance between each player and their corresponding centroid at each 100-millisecond interval.
+* Compute the Approximate Entropy (ApEn) using the distance values for each player, which indicates the predictability of the player's positioning.
+* Categorize the ApEn values into three groups (high, medium, and low) based on the quantiles of the ApEn distribution to assess the level of predictability.
 
-## 2 &nbsp; &nbsp; Data
+### 1.3 &nbsp; &nbsp; Positional Centroids vs Team Centroid
 
-The data used for this project is tracking data from a football match, including the following features:
-
-* *Timestamp*: Time elapsed since the start of the match in milliseconds.
-* *X*: X-coordinate of the player's position on the pitch.
-* *Y*: Y-coordinate of the player's position on the pitch.
-* *Speed*: The speed of the player in meters per second.
-* *Distance*: The distance the player has covered since the start of the match in meters.
-* *Heartbeat*: Heartbeat measured per min.
-* *TransponderID*: A unique identifier for the transponder attached to the player.
-* *PlayerID*: A unique identifier for the player.
-* *Position*: The player's position on the pitch, such as defender or attacker.
-* *Detailed_Position*: A more specific description of the player's position, such as right back or center forward.
-
-### 2.1 &nbsp; &nbsp; Data Preparation
-
-Although the data is in a clean tabular format, some preprocessing steps were necessary before conducting the exploratory analysis. The following are some of the crucial steps taken:
-
-* Remove goal keepers as they do not contribute to the formations of positional centroids.
-* Handle missing values in *X* and *Y* columns. Since the data is recorded in milliseconds, preceding and next rows should contain similar coordinate values. Hence forward filling was used.
-* Calculate positional centroids and the distance between each player and their corresponding centroid at each timestamp.
-
-### 2.2 &nbsp; &nbsp; Data Analysis - Visualising Centroids
-
-The figure shows two centroids - team and positional centroids.
+To clarify the approach of Memmert et al. (2017), two centroids are visualised below. 
 
 ![centroids on the pitch](\img\posts\pitch-positioning\centroids.png)
 
@@ -65,6 +42,63 @@ Positional centroids (**right**) are calculated by averaging locations of player
 
 This project chose positional centroids for computing ApEn, due to its sensitibity to capture player's movement patterns better (Memmert et al., 2017).
 
+## 2 &nbsp; &nbsp; Data
+
+The data for this project is tracking data from a football match, stored in two excel files (1st & 2nd half). Each file contains the following features:
+
+* *PlayerID*: A unique identifier for the player.
+* *Timestamp*: Time elapsed since the start of the match in milliseconds.
+* *X*: X-coordinate of the player's position on the pitch.
+* *Y*: Y-coordinate of the player's position on the pitch.
+* *Speed*: The speed of the player in meters per second.
+* *Distance*: The distance the player has covered since the start of the match in meters.
+* *Position*: The player's position on the pitch, such as defender or attacker.
+* *Detailed_Position*: A more specific description of the player's position, such as right back or center forward.
+
+I used pandas ```read_excel``` method to read the excel files into a pandas DataFrame, *df*.
+
+### 2.1 &nbsp; &nbsp; Data Processing
+
+Although the data is in a clean tabular format, some preprocessing steps were necessary before conducting the exploratory analysis. The following are some of the crucial steps taken:
+
+* Remove goal keepers as they do not contribute to the formations of positional centroids.
+
+```python
+idx_to_drop = df[df['PlayerID'].isin(['VitesseO19101', 'PSVO17179'])].index
+df.drop(idx_to_drop, inplace=True)
+```
+
+* Handle missing values in *X* and *Y* columns. 
+
+Since the data is recorded in milliseconds, preceding and next rows should contain similar coordinate values. Hence forward filling was used.
+
+```python
+df[['X','Y']] = df[['X','Y']].fillna(method= 'ffill')
+```
+
+* Calculate positional centroids
+
+We first create a new DataFrame *df_centroids* by getting the average X and Y coordinates of players based on their position and team for each timestamp
+
+```python
+df_centroids = df.groupby(['Timestamp', 'Position', 'Team'], as_index=False).agg({'X': np.mean, 'Y': np.mean})
+df_centroids.rename(columns = {'X':'Centroid_X', 'Y':'Centroid_Y'}, inplace = True)
+```
+We can now merge two DataFrames again.
+
+```python
+df_merged = df.merge(df_centroids, how='inner', on = ['Timestamp', 'Position', 'Team'])
+```
+
+* Calculate the distance between each player and their corresponding centroid at each timestamp.
+
+This is the final step of processing, we calculate the euclidean distance between each player and their position centroid for each timestamp with ```np.linalg.norm```.
+
+```python
+df_merged['Distance_to_Centroid'] = np.linalg.norm(
+    df_merged.loc[:, ['X', 'Y']].values - df_merged.loc[:, ['Centroid_X', 'Centroid_Y']], 
+    axis=1)
+```
 
 ## 3 &nbsp; &nbsp; Result
 
