@@ -38,9 +38,9 @@ To clarify the approach of Memmert et al. (2017), two centroids are visualised b
 
 ![centroids on the pitch](\img\posts\pitch-positioning\centroids.png)
 
-Positional centroids (**right**) are calculated by averaging locations of players who belong to the same position (e.g. defenders), team centroid (**left**) is the average location of all players on the pitch. The distance between each player and the centroids are shown in black dotted lines. 
+**Positional centroids** (**right**) are calculated by averaging locations of players who belong to the same position (e.g. defenders). One can also calculate another metric, **team centroid** (**left**) which is the average location of all players on the pitch. While both metrics offer valuable insights, Positional Centroids are generally considered more effective in capturing players' movement patterns (Memmert et al., 2017).
 
-This project chose positional centroids for computing ApEn, due to its sensitibity to capture player's movement patterns better (Memmert et al., 2017).
+After calculating the positional centroids, we can determine the distance between each player and their corresponding centroid. This process yields a vector containing distance values for each player. By inputting this vector into a function that calculates ApEn, we obtain a scalar value representing the predictability of a player's positioning relative to their centroid.
 
 ## 2 &nbsp; &nbsp; Data
 
