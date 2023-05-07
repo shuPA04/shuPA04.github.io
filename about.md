@@ -21,9 +21,9 @@ Below, you'll find a collection of personal and academic projects related to dat
 
 
 #### Other (MSc Data Science, UoL)
-* <a href="assets\pdf\CA1.pdf" style="color: #008AFF; text-decoration: underline;">Binary Classification</a>: Analysing performance of multiple supervised learning algorithms for a binary classification task 
-* <a href="assets\pdf\CA2.pdf" style="color: #008AFF; text-decoration: underline;">Neural Network for Regression</a>: Developing the most appropriate network architecture through hyperparameter tuning for a regression task
-* <a href="assets\pdf\CA3.pdf" style="color: #008AFF; text-decoration: underline;">Image Classification with CNN</a>: Proposing a new CNN model, built on top of a pre-trained CNN model
+* <a href="assets\pdf\CA1.pdf" style="color: #008AFF; text-decoration: underline;">Binary Classification</a>: Analysing performance of multiple supervised learning algorithms for a binary classification task. (<a href="https://github.com/shuPA04/UoL-Applied-AI/blob/main/code/CA1.ipynb" style="color: #008AFF; text-decoration: underline;">code</a>).
+* <a href="assets\pdf\CA2.pdf" style="color: #008AFF; text-decoration: underline;">Neural Network for Regression</a>: Developing the most appropriate network architecture through hyperparameter tuning for a regression task. (<a href="https://github.com/shuPA04/UoL-Applied-AI/blob/main/code/CA2.ipynb" style="color: #008AFF; text-decoration: underline;">code</a>)
+* <a href="assets\pdf\CA3.pdf" style="color: #008AFF; text-decoration: underline;">Image Classification with CNN</a>: Proposing a new CNN model, built on top of a pre-trained CNN model. (<a href="https://github.com/shuPA04/UoL-Applied-AI/blob/main/code/CA3.ipynb" style="color: #008AFF; text-decoration: underline;">code</a>)
 
 ### Education
 * **MSc Data Science & Artificial Intelligence**, University of Liverpool, Distinction (78%)
