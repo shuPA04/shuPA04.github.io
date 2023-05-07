@@ -13,7 +13,7 @@ Below, you'll find a collection of personal and academic projects related to dat
 ### Project List
 #### Personal Project
 * <a href="https://shupa04.github.io/2023/04/14/pitch-positioning.html" style="color: #008AFF; text-decoration: underline;">Pitch Positioning Predictability in Football</a>: Python, Approximate Entropy & Large Tracking Data (>1.5 million rows)
-* <a href="https://shupa04.github.io/2023/04/13/world-cup.html" style="color: #008AFF; text-decoration: underline;">Implementing Expected Threat (xT)</a>: Python, Discrete Markov Process, Statsbomb Open Data 
+* <a href="https://shupa04.github.io/2023/04/13/world-cup.html" style="color: #008AFF; text-decoration: underline;">World Cup Analysis with Expected Threat (xT)</a>: Python, Discrete Markov Process, Statsbomb Open Data 
 
 
 #### Group Project
