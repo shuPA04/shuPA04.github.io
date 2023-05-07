@@ -38,7 +38,7 @@ To clarify the approach of Memmert et al. (2017), two centroids are visualised b
 
 ![centroids on the pitch](\img\posts\pitch-positioning\centroids.png)
 
-**Positional centroids** (**right**) are calculated by averaging locations of players who belong to the same position (e.g. defenders). One can also calculate another metric, **team centroid** (**left**) which is the average location of all players on the pitch. While both metrics offer valuable insights, Positional Centroids are generally considered more effective in capturing players' movement patterns (Memmert et al., 2017).
+**Positional centroids** (**right**) are calculated by averaging locations of players who belong to the same position (e.g. defenders). One can also calculate another metric, **team centroid** (**left**) which is the average location of all players on the pitch. While both metrics offer valuable insights, positional centroids are generally considered more effective in capturing players' movement patterns (Memmert et al., 2017).
 
 After calculating the positional centroids, we can determine the distance between each player and their corresponding centroid. This process yields a vector containing distance values for each player. By inputting this vector into a function that calculates ApEn, we obtain a scalar value representing the predictability of a player's positioning relative to their centroid.
 
@@ -59,7 +59,7 @@ Pandas ```read_excel``` method was used to read the excel files into a pandas Da
 
 ### 2.1 &nbsp; &nbsp; Data Processing
 
-Although the data is in a clean tabular format, some preprocessing steps were necessary before conducting the exploratory analysis. The following are some of the crucial steps taken:
+Although the data is in a clean tabular format, some preprocessing steps were necessary before conducting the further analysis. The following are some of the crucial steps taken:
 
 * Remove goal keepers as they do not contribute to the formations of positional centroids.
 
